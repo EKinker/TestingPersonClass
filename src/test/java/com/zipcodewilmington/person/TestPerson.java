@@ -37,6 +37,7 @@ public class TestPerson {
         Assert.assertEquals(expected, actual);
     }
 
+
     @Test
     public void testConstructorWithAge() {
         // Given
@@ -48,6 +49,28 @@ public class TestPerson {
         // Then
         Integer actual = person.getAge();
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testConstructorWithAlive() {
+        boolean expected = true;
+        Person person = new Person(expected);
+        boolean actual = person.getIsAlive();
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testTwoStrings() {
+        String expectedName = "Holden";
+        String expectedPlanet = "Earth";
+
+        Person person = new Person(expectedName, expectedPlanet);
+        String actualName = person.getName();
+        String actualPlanet = person.getHomePlanet();
+
+        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(expectedPlanet, actualPlanet);
     }
 
 
@@ -66,6 +89,30 @@ public class TestPerson {
 
         Assert.assertEquals(expectedAge, actualAge);
         Assert.assertEquals(expectedName, actualName);
+    }
+
+    @Test
+    public void testConstructorWithAllInfo() {
+        Integer expectedAge = 45;
+        String expectedName = "Miller";
+        Boolean expectedAlive = false;
+        String expectedPlanet = "Ceres Station";
+        char expectedGender = 'M';
+
+        Person person = new Person(expectedName, expectedPlanet, expectedAge, expectedAlive, expectedGender);
+
+        Integer actualAge = person.getAge();
+        String actualName = person.getName();
+        Boolean actualAlive = person.getIsAlive();
+        String actualPlanet = person.getHomePlanet();
+        char actualGender = person.getGender();
+
+        Assert.assertEquals(expectedAge, actualAge);
+        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(expectedAlive, actualAlive);
+        Assert.assertEquals(expectedPlanet, actualPlanet);
+        Assert.assertEquals(expectedGender, actualGender);
+
     }
 
     @Test
@@ -94,5 +141,31 @@ public class TestPerson {
         // Then
         Integer actual = person.getAge();
         Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void testSetAlive() {
+        Person person = new Person();
+        boolean expected = true;
+        person.setIsAlive(expected);
+        boolean actual = person.getIsAlive();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetPlanet() {
+        Person person = new Person();
+        String expected = "Earth";
+        person.setHomePlanet(expected);
+        String actual = person.getHomePlanet();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testSetGender() {
+        Person person = new Person();
+        char expected = 'F';
+        person.setGender(expected);
+        char actual = person.getGender();
+        Assert.assertEquals(actual, expected);
     }
 }
